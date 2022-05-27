@@ -1,0 +1,11 @@
+# A few solutions to the classic Fibonacci Problem
+
+## Recursive Solution
+The code in [Recursive Solution](recursiveFib.cpp) has the "classic", un-optimized recursive solution. We define a function called `fib(n)` which calls itself recursively until the input is less than or equal to `1`, upon which the input value is returned. This solution requires approximately O(n²) time and O(n²) space as it performs excessive recursive calls (i.e. the function is called with the same input many times over),
+
+## Iterative Solution
+The code for the [Iterative Solution](iterativeFib.cpp) solves the Fibonacci problem using a for loop and some "tracking" variables to save on the time and space required by the [Recursive Solution](recursiveFib.cpp). While the [Recursive Solution](recursiveFib.cpp) works "backwards" (i.e. starting at `n` and decreasing), the [Iterative Solution](iterativeFib.cpp) works "forwards". We utilize two variables, `v1` and `v2`, which store the previous two numbers in the Fibonacci series, and a variable `s` which tracks the current sum. With each loop, we update the values accordingly until we reach `n`, then we can return the sum. This solution runs in O(n) time and requires O(1) space since we initialize the same number of variables to help us solve the problem, regardless of `n`. 
+
+## Recursive Solution with Memoization (record keeping)
+Tracing the calls of the [Recursive Solution](recursiveFib.cpp) shows we're calling the `fib(n)` function _many_ times with the same value of `n` - if we can store the result of `fib(n)` for each new value of `n`, we don't have to call it the next time, we can just recall the stored solution and avoid excessive calls - this is done using ["memoization"](recursiveMemoFib.exe)
+We'll define a vector for tracking the results of `fib(n)`, which will be reset and updated for each new call. The initial values will all be -1, so we can easily tell if we've solved for that value yet or not. This solution runs in O(n) time since we're only calling `fib(n)` n times, and requires O(n) space since we initialize a vector of length n to help us solve this problem.
